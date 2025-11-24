@@ -1,12 +1,11 @@
-import subprocess
-import yt_dlp  
 from textual.app import App, ComposeResult
-from textual.widgets import Static, Input, Header, Footer, Button
+from textual.widgets import Header, Footer, Button, Static, Input
 from textual.containers import Container, Grid
 from textual.screen import Screen
-from textual.binding import Binding
 from textual import events
 from typing import ClassVar
+import subprocess
+import yt_dlp  
 
 PLAYER_COMMAND: list[str] = ["mpv", "--vo=null"]
 
@@ -34,8 +33,8 @@ class QuitScreen(Screen):
 
 class YouTubePlayerScreen(Screen):
     BINDINGS = [
-        Binding("q", "request_quit", "Quit", show=True),
-        Binding("d", "toggle_dark", "Dark Mode", show=True),
+        ("q", "request_quit", "Quit"),
+        ("d", "toggle_dark", "Dark Mode"),
     ]
 
     def compose(self) -> ComposeResult:
@@ -167,9 +166,9 @@ class YouTubePlayerApp(App):
     
     CSS_PATH = "player.css"
     TITLE = "Textual YouTube Audio Player"
-    BINDINGS: ClassVar[list[Binding]] = [
-        Binding("q", "request_quit", "Quit"),
-        Binding("d", "toggle_dark", "Dark Mode"),
+    BINDINGS = [
+        ("q", "request_quit", "Quit"),
+        ("d", "toggle_dark", "Dark Mode"),
     ]
 
     def on_mount(self) -> None:
