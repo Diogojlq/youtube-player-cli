@@ -3,11 +3,8 @@ from textual.widgets import Header, Footer, Button, Static, Input
 from textual.containers import Container, Grid
 from textual.screen import Screen
 from textual import events
-from typing import ClassVar
 import subprocess
 import yt_dlp  
-
-PLAYER_COMMAND: list[str] = ["mpv", "--vo=null"]
 
 class QuitScreen(Screen):
     def compose(self) -> ComposeResult:
@@ -46,7 +43,6 @@ class YouTubePlayerScreen(Screen):
             yield Static(
                 f"[bold white on blue]YouTube Audio Player TUI[/bold white on blue]\n\n"
                 f"Enter a YouTube link below and press ENTER to start playback.\n\n"
-                f"[yellow]The audio will be played using MPV (command: {PLAYER_COMMAND[0]}).[/yellow]\n"
                 f"Press ESC to stop MPV playback.", 
                 id="display-box-static"
             )
@@ -91,13 +87,10 @@ class YouTubePlayerScreen(Screen):
             )
             return
 
-        # --- 2. Start MPV Player ---
-        player_args = PLAYER_COMMAND + [stream_url] 
         
         display_box.update(
             f"[bold green]Status: Playing![/bold green]\n"
             f"Title: [bold white]{title}[/bold white]\n"
-            f"Player Command: {' '.join(player_args)}\n\n"
             f"[i]Playback is now running in the background. Press ESC to stop the player.[/i]"
         )
 
@@ -105,13 +98,7 @@ class YouTubePlayerScreen(Screen):
         with self.app.suspend():
             try:
                 # subprocess.run is blocking here
-                process = subprocess.run(
-                    player_args, 
-                    check=False, # Do not raise CalledProcessError if mpv returns non-zero code (e.g., user quit)
-                    stdout=subprocess.PIPE, 
-                    stderr=subprocess.PIPE,
-                    text=True
-                )
+                process = subprocess.run(["pv", "--vo=tct", url])
                 
                 # --- 3. Report Playback Status ---
                 if process.returncode == 0:
@@ -139,8 +126,7 @@ class YouTubePlayerScreen(Screen):
             except FileNotFoundError:
                 display_box.update(
                     f"[bold red]FATAL ERROR: MPV Player not found![/bold red]\n"
-                    f"The command '{PLAYER_COMMAND[0]}' was not found on your system.\n"
-                    f"Please install MPV Media Player and try again."
+                    f"Ensure that 'mpv' is installed and available in your system PATH."
                 )
             except Exception as e:
                 display_box.update(
