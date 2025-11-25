@@ -95,7 +95,7 @@ class YouTubePlayerScreen(Screen):
 
         with self.app.suspend():
             try:
-                process = subprocess.run(["pv", "--vo=tct", url])
+                process = subprocess.run(["mpv", "--vo=tct", url])
                 
                 if process.returncode == 0:
                     display_box.update(
