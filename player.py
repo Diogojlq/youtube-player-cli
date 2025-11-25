@@ -63,7 +63,6 @@ class YouTubePlayerScreen(Screen):
         
         display_box.update(f"[yellow]Status:[/yellow] Extracting stream URL with yt-dlp...\n[i]Link: {url}[/i]")
         
-        # --- 1. Extract Stream URL using yt-dlp ---
         try:
             ydl_opts = {
                 'format': 'bestaudio/best', 
@@ -94,13 +93,10 @@ class YouTubePlayerScreen(Screen):
             f"[i]Playback is now running in the background. Press ESC to stop the player.[/i]"
         )
 
-        # Suspend Textual TUI while MPV takes over the terminal
         with self.app.suspend():
             try:
-                # subprocess.run is blocking here
                 process = subprocess.run(["pv", "--vo=tct", url])
                 
-                # --- 3. Report Playback Status ---
                 if process.returncode == 0:
                     display_box.update(
                         f"[bold green]Playback Complete![/bold green]\n"
@@ -108,10 +104,8 @@ class YouTubePlayerScreen(Screen):
                         f"[i]Enter a new link or press Q to quit.[/i]"
                     )
                 else:
-                     # MPV was closed by user (ESC/q) or encountered an internal error
                      error_output = (process.stderr.strip() or process.stdout.strip() or 'No detailed error reported.')
                      
-                     # A return code of 2 is often a user interrupt (ESC or 'q' keypress) in mpv
                      if process.returncode == 2:
                         status_message = "[bold yellow]Playback Stopped[/bold yellow]\nStatus: User interrupted playback (Code 2).\n"
                      else:
@@ -161,7 +155,6 @@ class YouTubePlayerApp(App):
         try:
             self.push_screen(YouTubePlayerScreen())
         except Exception as e:
-            # Fallback in case of Textual startup error
             print(f"Error initializing app: {e}")
         
     def action_request_quit(self) -> None:
