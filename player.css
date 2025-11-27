@@ -1,71 +1,113 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between; 
-    min-height: 100vh;
-    background-color: #f4f4f9; 
+Screen {
+    background: #0d1117;
+    color: #c9d1d9;
 }
 
-.box-vazia {
-    margin-top: auto; 
-    margin-bottom: 20px;
-    
+Header {
+    background: #161b22;
+    color: #58a6ff;
+    text-style: bold;
+}
+
+Footer {
+    background: #161b22;
+}
+
+#main-container {
     width: 80%;
-    max-width: 600px;
-    height: 400px;
-    
-    border: 2px solid #ccc; 
-    border-radius: 8px; 
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 20px;
+    max-width: 100;
+    margin: 3 1; 
+    align: center middle;
+    padding: 1 2;
 }
 
-.texto-exemplo {
-    color: #a0a0a0;
-    font-style: italic;
-    line-height: 1.5;
+#display-box-static {
+    height: auto;
+    min-height: 10;
+    max-height: 15;
+    background: #161b22;
+    border: heavy #30363d;
+    padding: 1;
+    content-align: left top;
+    text-align: left;
+    margin-bottom: 2;
 }
 
-.texto-exemplo a {
-    color: #4a90e2;
-    text-decoration: none;
-}
-
-.texto-exemplo a:hover {
-    text-decoration: underline;
-}
-
-
-.input-container {
-    width: 80%;
-    max-width: 600px;
-    padding: 15px;
-    background-color: #e9e9f1; 
-    border-radius: 8px 8px 0 0; 
-    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
-    margin-top: auto;
-}
-
-.input-container input[type="text"] {
+Input {
+    height: 3;
     width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size: 16px;
-    outline: none; 
+    background: #21262d;
+    color: #c9d1d9;
+    border: tall #58a6ff;
+    padding: 0 1;
 }
 
-.input-container input[type="text"]:focus {
-    border-color: #4a90e2; 
+QuitScreen {
+    align: center middle;
+}
+
+#dialog {
+    grid-size: 2 2;
+    grid-rows: 1fr 3; 
+    grid-columns: 1fr 1fr; 
+    width: 60%;
+    max-width: 60;
+    height: 10;
+    background: #161b22;
+    border: double #ff7b72;
+    align: center middle;
+    padding: 1;
+}
+
+#question {
+    column-span: 2;
+    text-align: center;
+    text-style: bold;
+    color: #ff7b72;
+    margin-bottom: 1;
+}
+
+#yes {
+    column-span: 1;
+    align: center middle;
+    background: #ff7b72;
+    color: #0d1117;
+    margin: 0 1;
+}
+
+#no {
+    column-span: 1;
+    align: center middle; 
+    background: #58a6ff;
+    color: #0d1117;
+    margin: 0 1;
+}
+
+.app.-dark {
+    Screen {
+        background: #0d1117;
+        color: #c9d1d9;
+    }
+}
+
+.app.-light {
+    Screen {
+        background: #f0f0f0;
+        color: #333333;
+    }
+    Header, Footer {
+        background: #cccccc;
+    }
+    #display-box-static {
+        background: #ffffff;
+        border: heavy #aaaaaa;
+    }
+    Input {
+        background: #ffffff;
+        border: tall #333333;
+    }
+    #dialog {
+        background: #ffffff;
+        border: double #ff4d4d;
+    }
 }
