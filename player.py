@@ -41,7 +41,7 @@ class YouTubePlayerScreen(Screen):
         with Container(id="main-container"):
             
             yield Static(
-                "[center]" +
+                "[red]" + "[center]" +
                 """
                 ⠀⠀⢀⣀⣠⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣄⣀⡀⠀⠀
                 ⠀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⠀
@@ -55,7 +55,7 @@ class YouTubePlayerScreen(Screen):
                 ⠀⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠀
                 ⠀⠀⠈⠉⠙⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠋⠉⠁⠀⠀
                 """ +
-                "[/center]",
+                "[/center]" + "[/red]",
                 id="logo",
             )
                     
