@@ -28,7 +28,7 @@ Footer {
     min-height: 10;
     max-height: 15;
     background: #000000;
-    border: heavy #c90909;
+    border: heavy #330101;
     padding: 1;
     content-align: center middle;
     margin-bottom: 2;
@@ -37,9 +37,8 @@ Footer {
 Input {
     height: 3;
     width: 100%;
-    background: #21262d;
+    background: #b20606;
     color: #c9d1d9;
-    border: tall #58a6ff;
     padding: 0 1;
 }
 
