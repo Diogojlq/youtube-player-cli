@@ -37,7 +37,7 @@ Footer {
 Input {
     height: 3;
     width: 100%;
-    background: #b20606;
+    background: #5e0303;
     color: #c9d1d9;
     padding: 0 1;
 }
@@ -81,33 +81,4 @@ QuitScreen {
     background: #58a6ff;
     color: #0d1117;
     margin: 0 1;
-}
-
-.app.-dark {
-    Screen {
-        background: #0d1117;
-        color: #c9d1d9;
-    }
-}
-
-.app.-light {
-    Screen {
-        background: #f0f0f0;
-        color: #333333;
-    }
-    Header, Footer {
-        background: #cccccc;
-    }
-    #display-box-static {
-        background: #ffffff;
-        border: heavy #aaaaaa;
-    }
-    Input {
-        background: #ffffff;
-        border: tall #333333;
-    }
-    #dialog {
-        background: #ffffff;
-        border: double #ff4d4d;
-    }
 }
