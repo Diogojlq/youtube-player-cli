@@ -51,6 +51,11 @@ Verify that MPV is available:
 ```
 mpv --version
 ```
+To run the app, simply run:
+```
+python player.py
+```
+And you're good to go.
 
 ### Installing MPV
 
